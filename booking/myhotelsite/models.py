@@ -93,7 +93,7 @@ class Review(models.Model):
     user_name = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='reviews',)
     text = models.TextField(null=True, blank=True)
-    stars = models.IntegerField(max_length=16, choices=[(i, str(i)) for i in range(1, 6)], verbose_name="Рейтинг", null=True, blank=True)
+    stars = models.IntegerField(choices=[(i, str(i)) for i in range(1, 6)], verbose_name="Рейтинг", null=True, blank=True)
     parent=models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
